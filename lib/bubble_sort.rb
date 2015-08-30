@@ -1,57 +1,45 @@
 require 'pry'
 
-class BubbleSort
-  def initialize(array)
-    @array = array
-    @previous = array.first
-    @current_index = 1
-    @current = array[@current_index]
-  end
+module SortingSuite
+  class BubbleSort
+    attr_reader :unsorted
 
-  def get_array
-    @array
-  end
-
-  def get_previous
-    @previous
-  end
-
-  def get_current_index
-    @current_index
-  end
-
-  def get_current
-    @current
-  end
-
-  def swap!(array, current_index)
-    previous_index = current_index - 1
-    current = array.slice!(current_index)
-    array.insert(previous_index, current)
-    array
-  end
-
-
-
-  def sort
-    array = get_array
-    current_index = get_current_index
-    current = get_current
-    previous = get_previous
-    array.count.times do
-      loop do
-        current = array[current_index]
-        previous = array[current_index - 1]
-        if current < previous
-          array = swap!(array, current_index)
-        end
-        current_index += 1
-        current = array[current_index]
-        previous = array[current_index - 1]
-        break unless current_index < array.count
-      end
-      current_index = 1
+    def initialize(unsorted)
+      @unsorted = unsorted
     end
-    array
+
+    def swap!(p_idx, p_ele, c_idx, c_ele)
+      unsorted[p_idx] = c_ele
+      unsorted[c_idx] = p_ele
+    end
+
+    def pass!(comparisons, prev_idx, current_idx)
+      1.upto comparisons do
+        prev_element = unsorted[prev_idx]
+        current_element = unsorted[current_idx]
+
+        if prev_element > current_element
+          swap!(prev_idx, prev_element, current_idx, current_element)
+        end
+
+        comparisons -= 1
+        prev_idx += 1
+        current_idx += 1
+      end
+    end
+
+    def sort
+      unsorted.count - 1
+      0.upto unsorted.count - 1 do
+        comparisons =  unsorted.count - 1
+        prev_idx = 0
+        current_idx = 1
+
+        pass!(comparisons, prev_idx, current_idx)
+      end
+      unsorted
+    end
   end
 end
+
+SortingSuite::BubbleSort.new(['z', 'f', 'r', 'a', 'b', 'c']).sort # => ["a", "b", "c", "f", "r", "z"]
