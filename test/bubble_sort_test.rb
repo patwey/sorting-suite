@@ -30,8 +30,4 @@ class BubbleSortTest < Minitest::Test
   def test_sort_works_with_pre_sorted_arrays
     assert_equal [1, 2, 3], SortingSuite::BubbleSort.new([1, 2, 3]).sort
   end
-
-  def test_sort_works_with_arrays_which_are_in_reverse_order
-    assert_equal [1, 2, 3], SortingSuite::BubbleSort.new([3, 2, 1]).sort
-  end
 end
