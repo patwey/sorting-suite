@@ -33,9 +33,4 @@ class MergeSortTest < Minitest::Test
     assert_equal ['a', 'b', 'c'], SortingSuite::MergeSort.new(['c', 'b', 'a']).sort
     assert_equal ['a', 'b', 'c', 'd', 'e'], SortingSuite::MergeSort.new(['e', 'c', 'a', 'b', 'd']).sort
   end
-
-  def test_tester_is_aware_of_his_merge_sorts_shortcomings
-    refute_equal [1, 2, 3, 4], SortingSuite::MergeSort.new([3, 2, 4, 1]).sort
-  end
-
 end
