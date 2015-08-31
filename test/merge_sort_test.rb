@@ -18,7 +18,9 @@ class MergeSortTest < Minitest::Test
 
   def test_sort_method_returns_sorted_one_dimensional_arrays_when_given_the_code_snippets
     assert_equal [1, 2, 3], SortingSuite::MergeSort.new([3, 2, 1]).sort
-    assert_equal [1, 2, 3, 4, 5], SortingSuite::MergeSort.new([5, 3, 1, 2, 4]).sort
+    expected = [1, 2, 3, 4, 5]
+    result = SortingSuite::MergeSort.new([5, 3, 1, 2, 4]).sort
+    assert_equal expected, result
   end
 
   def test_sort_works_with_pre_sorted_arrays
