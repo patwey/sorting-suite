@@ -1,5 +1,3 @@
-require 'pry'
-
 module SortingSuite
   class InsertionSort
     attr_reader :unsorted, :sorted
@@ -10,20 +8,19 @@ module SortingSuite
     end
 
     def empty!(unsorted_num)
-        sorted << unsorted_num
+      sorted << unsorted_num
     end
 
     def smallest!(unsorted_num)
-        sorted.unshift(unsorted_num)
+      sorted.unshift(unsorted_num)
     end
 
     def largest!(unsorted_num)
-        sorted.push(unsorted_num)
+      sorted.push(unsorted_num)
     end
 
     def insert_before_larger!(unsorted_num)
       sorted.each_with_index do |sorted_num, sorted_idx|
-        sorted_num
         if sorted_num > unsorted_num
           sorted.insert(sorted_idx, unsorted_num)
           break
@@ -46,5 +43,3 @@ module SortingSuite
     end
   end
 end
-
-SortingSuite::InsertionSort.new([5, 1, 3, 2, 8, 4, 10]).sort

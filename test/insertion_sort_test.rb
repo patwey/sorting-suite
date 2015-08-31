@@ -39,4 +39,20 @@ class InsertionSortTest < Minitest::Test
   def test_sort_fills_sorted_with_unsorted_arranged_in_ascending_order
     assert_equal ['a', 'b', 'c', 'd'], SortingSuite::InsertionSort.new(['d', 'b', 'a', 'c']).sort
   end
+
+  def test_sort_works_with_empty_arrays
+    assert_equal [], SortingSuite::InsertionSort.new([]).sort
+  end
+
+  def test_sort_works_with_pre_sorted_arrays
+    assert_equal [1, 2, 3], SortingSuite::InsertionSort.new([1, 2, 3]).sort
+  end
+
+  def test_sort_works_with_arrays_which_are_in_reverse_order
+    assert_equal [1, 2, 3], SortingSuite::InsertionSort.new([3, 2, 1]).sort
+  end
+
+  def test_sort_works_with_arrays_of_strings
+    assert_equal ['a', 'b', 'z'], SortingSuite::InsertionSort.new(['z', 'a', 'b']).sort
+  end
 end

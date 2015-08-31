@@ -19,7 +19,19 @@ class BubbleSortTest < Minitest::Test
     assert_equal ['a', 'b', 'z'], bubble_sort.unsorted
   end
 
-  def test_sort_rearranges_unsorted_in_ascending_order
+  def test_sort_works_with_arrays_of_strings
     assert_equal ['a', 'b', 'c'], SortingSuite::BubbleSort.new(['c', 'b', 'a']).sort
+  end
+
+  def test_sort_works_with_empty_arrays
+    assert_equal [], SortingSuite::BubbleSort.new([]).sort
+  end
+
+  def test_sort_works_with_pre_sorted_arrays
+    assert_equal [1, 2, 3], SortingSuite::BubbleSort.new([1, 2, 3]).sort
+  end
+
+  def test_sort_works_with_arrays_which_are_in_reverse_order
+    assert_equal [1, 2, 3], SortingSuite::BubbleSort.new([3, 2, 1]).sort
   end
 end

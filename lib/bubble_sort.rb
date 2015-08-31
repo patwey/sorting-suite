@@ -1,5 +1,3 @@
-require 'pry'
-
 module SortingSuite
   class BubbleSort
     attr_reader :unsorted
@@ -29,9 +27,8 @@ module SortingSuite
     end
 
     def sort
-      unsorted.count - 1
       0.upto unsorted.count - 1 do
-        comparisons =  unsorted.count - 1
+        comparisons = unsorted.count - 1
         prev_idx = 0
         current_idx = 1
 
@@ -41,5 +38,3 @@ module SortingSuite
     end
   end
 end
-
-SortingSuite::BubbleSort.new(['z', 'f', 'r', 'a', 'b', 'c']).sort # => ["a", "b", "c", "f", "r", "z"]
