@@ -43,3 +43,6 @@ module SortingSuite
     end
   end
 end
+
+SortingSuite::InsertionSort.new([3, 2, 1]).sort
+SortingSuite::InsertionSort.new([2,5,4,1,3]).sort
